@@ -42,7 +42,7 @@
 
 | 觸發點 | GA4 event | Meta Pixel event | Google Ads conversion |
 |---|---|---|---|
-| 註冊成功 | `sign_up` | `CompleteRegistration` | 沿用舊站既有 label（`AW-11040940908/xxxx`，Mickey 會提供完整 label）|
+| 註冊成功 | `sign_up` | `CompleteRegistration` | `AW-11040940908/ujJLCNnd86AcEOzG3ZAp`（轉換名：`Venta_signup_success`）|
 
 - [ ] **「註冊成功」的確切觸發點**：註冊流程為「填表 → 收驗證信 → 點驗證連結 → 進入後台」。**最後「進入後台」那個頁面 URL 工程師確認後回報 Mickey**，三邊事件都在那個頁面載入時觸發（不是表單送出那步）
 - [ ] 埋碼用 `async` 或 `defer`，**不可阻擋頁面渲染**
