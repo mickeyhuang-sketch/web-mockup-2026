@@ -28,13 +28,26 @@
 - [ ] 每頁至少放一個「預約 Demo」或「免費試用」按鈕，位置參照 `index.html` mockup
 
 ### 追蹤碼 / Pixel（全站每頁都要埋）
-- [ ] **GA4** gtag — Mickey 提供 Measurement ID（`G-XXXXXXXXXX`），全站每頁載入
-- [ ] **Meta Pixel** — Mickey 提供 Pixel ID，全站每頁載入，自動觸發 `PageView`
-- [ ] 關鍵事件手動觸發（在 CTA 按鈕上同時打 GA4 + Meta Pixel 事件）：
-  - 「預約 Demo」按鈕 → GA4: `book_demo` ｜ Meta: `Lead`（送出表單那步才打，點擊不打）
-  - 「免費試用」按鈕 → GA4: `start_trial` ｜ Meta: `CompleteRegistration`
-  - 「聯絡我們」表單送出 → GA4: `contact_submit` ｜ Meta: `Contact`
-- [ ] 埋碼**不可阻擋頁面渲染**（用 `async` 或 `defer`，不要同步載入）
+
+沿用舊站已在跑的三組 ID（`gowarehouse.asia/contact.html` 可參考實裝）：
+
+| 工具 | ID | 說明 |
+|---|---|---|
+| GA4 | `G-S68QZYGJHW` | 全站分析，每頁載入 |
+| Meta Pixel | `1460571689043987` | 每頁載入，自動觸發 `PageView` |
+| Google Ads | `AW-11040940908` | 轉換追蹤 tag，配合下方轉換事件使用 |
+
+- [ ] GA4、Meta Pixel、Google Ads 三組 tag 全站每頁埋入
+- [ ] 關鍵事件同時打 GA4 + Meta Pixel + Google Ads 三邊：
+
+| 觸發點 | GA4 event | Meta Pixel event | Google Ads conversion |
+|---|---|---|---|
+| 「預約 Demo」表單送出 | `book_demo` | `Lead` | 轉換動作（新建，Mickey 提供 label）|
+| 「免費試用」表單送出 | `start_trial` | `CompleteRegistration` | 轉換動作（新建，Mickey 提供 label）|
+| 「聯絡我們」表單送出 | `contact_submit` | `Contact` | `AW-11040940908/xxxx`（舊站既有 label，Mickey 提供）|
+
+- [ ] 事件都在**表單送出成功**那步觸發（按鈕點擊不算），避免重複計算
+- [ ] 埋碼用 `async` 或 `defer`，**不可阻擋頁面渲染**
 
 ---
 
@@ -107,8 +120,9 @@
 - [ ] 部署 301 redirect 規則，用 `curl -I` 逐條驗證
 - [ ] 提交新 sitemap.xml 到 Google Search Console
 - [ ] 提交新 sitemap.xml 到 Bing Webmaster Tools
-- [ ] 確認 GA4 追蹤碼在每頁都有正常發送（用 GA4 DebugView 驗證）
-- [ ] 確認 **Meta Pixel** 在每頁都有正常發送（用 Chrome 擴充「Meta Pixel Helper」驗證 PageView 有觸發）
-- [ ] 確認 CTA 事件 GA4 + Meta Pixel **都有收到**（實際點一次按鈕，兩邊後台都看得到）
+- [ ] 確認 GA4（`G-S68QZYGJHW`）在每頁都有正常發送（用 GA4 DebugView 驗證）
+- [ ] 確認 Meta Pixel（`1460571689043987`）在每頁都有正常發送（用 Chrome 擴充「Meta Pixel Helper」驗證 PageView 有觸發）
+- [ ] 確認 Google Ads tag（`AW-11040940908`）已載入（可用 Chrome 擴充「Tag Assistant Legacy」確認）
+- [ ] 確認 CTA 事件 **三邊都有收到**（實際送出一次表單，GA4 / Meta Events Manager / Google Ads 轉換紀錄各自可見）
 - [ ] 確認 Schema.org 結構化資料通過 Google Rich Results Test
 - [ ] 用 PageSpeed Insights 跑一次全站主要頁面，截圖存檔
