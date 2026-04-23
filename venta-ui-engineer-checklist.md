@@ -25,7 +25,7 @@
 - [ ] 每頁至少 2-3 個連結指向站內其他相關頁面（參照 `index.html` mockup 中的互連規劃）
 
 ### CTA 按鈕
-- [ ] 每頁至少放一個「預約 Demo」或「免費試用」按鈕，位置參照 `index.html` mockup
+- [ ] 每頁至少放一個「**立即註冊**」按鈕，位置參照 `index.html` mockup
 
 ### 追蹤碼 / Pixel（全站每頁都要埋）
 
@@ -38,15 +38,13 @@
 | Google Ads | `AW-11040940908` | 轉換追蹤 tag，配合下方轉換事件使用 |
 
 - [ ] GA4、Meta Pixel、Google Ads 三組 tag 全站每頁埋入
-- [ ] 關鍵事件同時打 GA4 + Meta Pixel + Google Ads 三邊：
+- [ ] **註冊成功**這個唯一轉換，三邊同時打：
 
 | 觸發點 | GA4 event | Meta Pixel event | Google Ads conversion |
 |---|---|---|---|
-| 「預約 Demo」表單送出 | `book_demo` | `Lead` | 轉換動作（新建，Mickey 提供 label）|
-| 「免費試用」表單送出 | `start_trial` | `CompleteRegistration` | 轉換動作（新建，Mickey 提供 label）|
-| 「聯絡我們」表單送出 | `contact_submit` | `Contact` | `AW-11040940908/xxxx`（舊站既有 label，Mickey 提供）|
+| 註冊成功 | `sign_up` | `CompleteRegistration` | 沿用舊站既有 label（`AW-11040940908/xxxx`，Mickey 會提供完整 label）|
 
-- [ ] 事件都在**表單送出成功**那步觸發（按鈕點擊不算），避免重複計算
+- [ ] **「註冊成功」的確切觸發點**：註冊流程為「填表 → 收驗證信 → 點驗證連結 → 進入後台」。**最後「進入後台」那個頁面 URL 工程師確認後回報 Mickey**，三邊事件都在那個頁面載入時觸發（不是表單送出那步）
 - [ ] 埋碼用 `async` 或 `defer`，**不可阻擋頁面渲染**
 
 ---
@@ -123,6 +121,6 @@
 - [ ] 確認 GA4（`G-S68QZYGJHW`）在每頁都有正常發送（用 GA4 DebugView 驗證）
 - [ ] 確認 Meta Pixel（`1460571689043987`）在每頁都有正常發送（用 Chrome 擴充「Meta Pixel Helper」驗證 PageView 有觸發）
 - [ ] 確認 Google Ads tag（`AW-11040940908`）已載入（可用 Chrome 擴充「Tag Assistant Legacy」確認）
-- [ ] 確認 CTA 事件 **三邊都有收到**（實際送出一次表單，GA4 / Meta Events Manager / Google Ads 轉換紀錄各自可見）
+- [ ] **實際走完一次完整註冊流程**（填表 → 驗證信 → 進後台），確認抵達後台時 GA4 `sign_up` / Meta `CompleteRegistration` / Google Ads 轉換 **三邊全部收到**
 - [ ] 確認 Schema.org 結構化資料通過 Google Rich Results Test
 - [ ] 用 PageSpeed Insights 跑一次全站主要頁面，截圖存檔
