@@ -64,13 +64,6 @@
 - [ ] **FAQPage** — 每頁底部 FAQ 問答（問題 + 答案）參照 `index.html` mockup，工程師包成 FAQPage schema
 - [ ] **HowTo**（教學類頁面）— 步驟文字參照 `index.html` mockup，工程師包成 HowTo schema
 
-### 部落格 / 知識庫
-- [ ] **Article** — 標題、作者、發布日期、修改日期、描述
-
-### 客戶評價頁（有評價內容後）
-- [ ] **AggregateRating** — 總評分、評論數
-- [ ] **Review** — 每則評價的作者、評分、內容
-
 ---
 
 ## 三、技術 SEO 基礎建設
