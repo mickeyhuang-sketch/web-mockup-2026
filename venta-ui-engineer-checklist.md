@@ -62,7 +62,6 @@
 
 ### 功能頁 / 產業頁
 - [ ] **FAQPage** — 每頁底部 FAQ 問答（問題 + 答案）參照 `index.html` mockup，工程師包成 FAQPage schema
-- [ ] **HowTo**（教學類頁面）— 步驟文字參照 `index.html` mockup，工程師包成 HowTo schema
 
 ---
 
