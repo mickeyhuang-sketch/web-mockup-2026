@@ -27,6 +27,15 @@
 ### CTA 按鈕
 - [ ] 每頁至少放一個「預約 Demo」或「免費試用」按鈕，位置參照 `index.html` mockup
 
+### 追蹤碼 / Pixel（全站每頁都要埋）
+- [ ] **GA4** gtag — Mickey 提供 Measurement ID（`G-XXXXXXXXXX`），全站每頁載入
+- [ ] **Meta Pixel** — Mickey 提供 Pixel ID，全站每頁載入，自動觸發 `PageView`
+- [ ] 關鍵事件手動觸發（在 CTA 按鈕上同時打 GA4 + Meta Pixel 事件）：
+  - 「預約 Demo」按鈕 → GA4: `book_demo` ｜ Meta: `Lead`（送出表單那步才打，點擊不打）
+  - 「免費試用」按鈕 → GA4: `start_trial` ｜ Meta: `CompleteRegistration`
+  - 「聯絡我們」表單送出 → GA4: `contact_submit` ｜ Meta: `Contact`
+- [ ] 埋碼**不可阻擋頁面渲染**（用 `async` 或 `defer`，不要同步載入）
+
 ---
 
 ## 二、結構化資料 Schema.org（寫在 HTML 裡，消費者看不到）
@@ -99,5 +108,7 @@
 - [ ] 提交新 sitemap.xml 到 Google Search Console
 - [ ] 提交新 sitemap.xml 到 Bing Webmaster Tools
 - [ ] 確認 GA4 追蹤碼在每頁都有正常發送（用 GA4 DebugView 驗證）
+- [ ] 確認 **Meta Pixel** 在每頁都有正常發送（用 Chrome 擴充「Meta Pixel Helper」驗證 PageView 有觸發）
+- [ ] 確認 CTA 事件 GA4 + Meta Pixel **都有收到**（實際點一次按鈕，兩邊後台都看得到）
 - [ ] 確認 Schema.org 結構化資料通過 Google Rich Results Test
 - [ ] 用 PageSpeed Insights 跑一次全站主要頁面，截圖存檔
