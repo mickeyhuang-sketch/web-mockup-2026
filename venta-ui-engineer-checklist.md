@@ -11,7 +11,9 @@
 - [ ] `<title>` 用 Yvette 給的標題，格式 `頁面主題 | GoWarehouse`，不超過 60 字元
 - [ ] `<meta name="description">` 用 Yvette 給的描述，不超過 155 字元
 - [ ] `<link rel="canonical">` 指向該頁自己的 URL（不要全站指向首頁）
-- [ ] `<link rel="alternate" hreflang="zh-TW">` / `hreflang="en"` / `hreflang="x-default"` 中英互指
+- [ ] `<link rel="alternate" hreflang="...">` 每頁要列出所有語系互指 + `x-default`
+  - 目前已列：`zh-TW`（繁中，預設）｜`en`（英文）｜`ja`（日文）｜`vi`（越南文）｜`th`（泰文）｜`es`（西班牙文）
+  - `x-default` 指向 `zh-TW` 版本
 - [ ] Open Graph 標籤（og:title / og:description / og:image）— 分享到社群時的預覽
 
 ### 圖片
@@ -52,6 +54,15 @@
 ---
 
 ## 三、技術 SEO 基礎建設
+
+### 多國語系（i18n）
+- [ ] 支援多國語系，目前已列：**繁中（zh-TW，預設）／英文（en）／日文（ja）／越南文（vi）／泰文（th）／西班牙文（es）**（後續可再擴充）
+- [ ] 語系切換 UI：header 右上角放語系 dropdown，顯示該語言的原文名稱（中文 / English / 日本語 / Tiếng Việt / ภาษาไทย / Español）
+- [ ] URL 結構用子路徑：`/zh-TW/` `/en/` `/ja/` `/vi/` `/th/` `/es/`（不要用 query string `?lang=en`）
+- [ ] 根網域 `/` 自動依瀏覽器 `Accept-Language` 302 導向對應語系，未命中則預設 `zh-TW`
+- [ ] 切換語系時停留在當前頁（例：從 `/zh-TW/pricing` 切到 `/ja/pricing`，不要回首頁）
+- [ ] 每個語系版本都要完整翻譯（Yvette 會提供各語系文案 CSV），不要只翻首頁讓內頁留中文
+- [ ] 日期 / 數字 / 價格格式依語系 locale 顯示（例：日文用「¥」｜泰文用「฿」｜西文用千分位「.」）
 
 ### URL 結構
 - [ ] 全小寫、用 `-` 分隔，如 `/features/batch-picking`，不要用 `.html` 結尾
@@ -104,3 +115,4 @@
 | 頁面互連指示 | 「A 頁連到 B 頁」清單 |
 | 舊站 URL 對照表 | 舊 URL → 新 URL |
 | 定價資訊 | 方案名稱 + 價格 |
+| 多國語系文案 | CSV（key + zh-TW / en / ja / vi / th / es 各欄，可再擴充） |
