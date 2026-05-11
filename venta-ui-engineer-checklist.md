@@ -63,6 +63,16 @@
 ### 功能頁 / 產業頁
 - [ ] **FAQPage** — 每頁底部 FAQ 問答（問題 + 答案）參照 `index.html` mockup，工程師包成 FAQPage schema
 
+### 知識庫（2026-05-11 新增 — 首發 18 篇，對標 GoodDeal /blog/ 卡位 AI 搜尋引用）
+- [ ] **Blog**（知識庫列表頁 `/knowledge/`）— 列表頁本身包成 Blog schema，每張文章卡片含 BlogPosting microdata
+- [ ] **Article**（每篇文章內頁 `/knowledge/[slug]/`）— headline / datePublished / dateModified / author / image / wordCount / inLanguage 全部必填
+- [ ] **BreadcrumbList**（每篇文章內頁）— 首頁 → 知識庫 → 該篇文章
+- [ ] **FAQPage**（如該篇文章有 FAQ section）— 每篇文章底部都有 FAQ
+- [ ] **內鏈規則**：每篇文章末尾固定區塊「延伸閱讀（3 篇相關文章）」+ 「相關產品功能頁（2 個）」+ CTA（免費試用 / LINE OA）
+- [ ] **OpenGraph + Twitter Card meta**：每篇文章需有 og:title / og:description / og:image / twitter:card='summary_large_image' / twitter:title / twitter:description / twitter:image
+- [ ] **URL slug 規格**：全 ASCII kebab-case（已在 `index.html` mockup 18 篇卡片內列出每篇對應 slug），中文版本沿用同一 slug 不另開路徑
+- [ ] **TOC（Table of Contents）**：超過 1500 字文章自動產生目錄區塊，方便讀者跳轉，同時提升 AEO 友善度
+
 ---
 
 ## 三、技術 SEO 基礎建設
